@@ -12,10 +12,10 @@ ActiveRecord::Base.establish_connection(
    require './models/Todo'
 
 #
-# # *** VIEW-ROUTES ***
-# get '/' do
-#   erb :index
-# end
+# *** VIEW-ROUTES ***
+get '/' do
+  erb :index
+end
 
 # get \api\todos
 # All todos
@@ -45,8 +45,7 @@ end
 # Update an existing todo
 put '/api/todos/:id' do
   content_type :json
-  todo = Todo.find(params[:id].to_i)
-  Todo.update(params[:todo])
+  todo = Todo.find(params[:id].to_i).update(params[:todo])
   todo.to_json
 end
 
@@ -54,8 +53,7 @@ end
 # Update an existing todo
 patch '/api/todos/:id' do
   content_type :json
-  todo = Todo.find(params[:id].to_i)
-  Todo.update(params[:todo])
+  todo = Todo.find(params[:id].to_i).update(params[:todo])
   todo.to_json
 end
 
